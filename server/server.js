@@ -17,4 +17,10 @@ app.get("/", (request, response) => {
     response.status(200).json("woot woot")
 });
 
+app.get("/cats", async(request, response)=>{
+    const allCats = await Cat.find(request.query)
+    response.status(200).json(allCats)
+})
+
+
 app.listen(PORT, () => console.log(`App is listening on port ${PORT}`));
